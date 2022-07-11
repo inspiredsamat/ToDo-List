@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <script type="text/javascript"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">ToDo Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/todolist/}">ToDo Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-container-center card">
+                <h1 class="text-center">Create new ToDo</h1>
+                <div class="card-body">
+                    <form th:action="@{/todolist}" th:object="${toDo}" method="POST">
+                        <div class="form-group">
+                            <label>ToDo Name</label>
+                            <input type="text" name="name" th:field="*{name}" class="form-control"
+                                placeholder="Enter ToDo Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>ToDo Priority</label>
+                            <input type="number" name="priority" value="1" th:field="*{priority}" class="form-control"
+                                min="1" max="10" placeholder="Enter ToDo Priority">
+                        </div>
+
+                        <div class="form-group">
+                            <label>ToDo Deadline</label>
+                            <input type="date" name="deadline" th:field="*{deadlineDate}" class="form-control"
+                                placeholder="Enter ToDo Deadline Date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>ToDo Deadline</label>
+                            <input type="time" name="deadline" th:field="*{deadlineTime}" class="form-control"
+                                placeholder="Enter ToDo Deadline Time">
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
